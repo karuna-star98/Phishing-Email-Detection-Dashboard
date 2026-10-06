@@ -1,0 +1,136 @@
+{
+  "dataset_rows": 628,
+  "split": {
+    "train": 439,
+    "validation": 94,
+    "test": 95
+  },
+  "selected_model": "LogReg (TF-IDF + indicators)",
+  "validation_f1": {
+    "NaiveBayes (TF-IDF)": 1.0,
+    "LogReg (TF-IDF)": 1.0,
+    "LogReg (TF-IDF + indicators)": 1.0,
+    "RandomForest (indicators only)": 1.0,
+    "RandomForest (TF-IDF + indicators)": 1.0
+  },
+  "test_metrics": {
+    "NaiveBayes (TF-IDF)": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tn": 48,
+      "fp": 0,
+      "fn": 0,
+      "tp": 47
+    },
+    "LogReg (TF-IDF)": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tn": 48,
+      "fp": 0,
+      "fn": 0,
+      "tp": 47
+    },
+    "LogReg (TF-IDF + indicators)": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tn": 48,
+      "fp": 0,
+      "fn": 0,
+      "tp": 47
+    },
+    "RandomForest (indicators only)": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tn": 48,
+      "fp": 0,
+      "fn": 0,
+      "tp": 47
+    },
+    "RandomForest (TF-IDF + indicators)": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tn": 48,
+      "fp": 0,
+      "fn": 0,
+      "tp": 47
+    },
+    "Rule engine only": {
+      "accuracy": 0.8316,
+      "precision": 1.0,
+      "recall": 0.6596,
+      "f1": 0.7949,
+      "tn": 48,
+      "fp": 0,
+      "fn": 16,
+      "tp": 31
+    },
+    "Hybrid (rules + LogReg (TF-IDF + indicators))": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tn": 48,
+      "fp": 0,
+      "fn": 0,
+      "tp": 47
+    }
+  },
+  "leave_one_phishing_category_out": {
+    "fake HR request": {
+      "n": 44,
+      "ml_recall": 0.0,
+      "rules_recall": 0.545,
+      "hybrid_recall": 0.455
+    },
+    "fake account verification": {
+      "n": 46,
+      "ml_recall": 1.0,
+      "rules_recall": 1.0,
+      "hybrid_recall": 1.0
+    },
+    "fake delivery": {
+      "n": 46,
+      "ml_recall": 1.0,
+      "rules_recall": 0.0,
+      "hybrid_recall": 1.0
+    },
+    "fake executive request": {
+      "n": 45,
+      "ml_recall": 0.0,
+      "rules_recall": 0.0,
+      "hybrid_recall": 0.0
+    },
+    "fake invoice": {
+      "n": 45,
+      "ml_recall": 1.0,
+      "rules_recall": 1.0,
+      "hybrid_recall": 1.0
+    },
+    "fake password expiration": {
+      "n": 45,
+      "ml_recall": 1.0,
+      "rules_recall": 1.0,
+      "hybrid_recall": 1.0
+    },
+    "fake prize": {
+      "n": 43,
+      "ml_recall": 1.0,
+      "rules_recall": 1.0,
+      "hybrid_recall": 1.0
+    }
+  },
+  "notes": [
+    "Data is SYNTHETIC and template-based: scores are optimistic compared with real mail.",
+    "Model selected on validation F1; test set used once for reporting."
+  ]
+}

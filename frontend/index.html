@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phishing Email Detection &amp; Awareness Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">🛡️ Phishing Email Detection <span>&amp; Awareness Dashboard</span></div>
+    <nav id="tabs">
+      <button data-tab="analyzer" class="active">Email Analyzer</button>
+      <button data-tab="dashboard">Dashboard</button>
+      <button data-tab="history">History</button>
+      <button data-tab="awareness">Awareness</button>
+    </nav>
+    <div id="account"></div>
+  </header>
+  <p class="banner">Educational tool. Use synthetic or authorized emails only. Links and attachments are never opened or executed.</p>
+
+  <main>
+    <section id="tab-analyzer" class="tab active">
+      <div class="grid2">
+        <div class="card">
+          <h2>Analyze an email</h2>
+          <div class="row">
+            <button class="ghost" id="s-legit">Load safe sample</button>
+            <button class="ghost" id="s-phish">Load synthetic phishing sample</button>
+            <label class="ghost filebtn">Upload .txt / .eml<input type="file" id="file" accept=".txt,.eml" hidden></label>
+          </div>
+          <label>Sender <input id="sender" maxlength="320" placeholder='e.g. Support Team &lt;help@example.org&gt;'></label>
+          <label>Subject <input id="subject" maxlength="500"></label>
+          <label>Body <textarea id="body" rows="9" maxlength="50000"></textarea></label>
+          <label>Attachment filename(s), optional <input id="attachment" placeholder="invoice.pdf.exe (name only - never uploaded)"></label>
+          <button id="analyze" class="primary">ANALYZE EMAIL</button>
+          <p class="muted" id="analyze-msg"></p>
+        </div>
+        <div class="card" id="result"><h2>Result</h2><p class="muted">Paste an email and press Analyze, or load a sample.</p></div>
+      </div>
+    </section>
+
+    <section id="tab-dashboard" class="tab">
+      <div class="row between">
+        <h2>Security analytics</h2>
+        <label class="inline">Range
+          <select id="range"><option value="0">All time</option><option value="1">24 hours</option><option value="7">7 days</option><option value="30">30 days</option></select>
+        </label>
+      </div>
+      <div class="cards" id="cards"></div>
+      <div class="grid3" id="charts">
+        <div class="card"><h3>Classification distribution</h3><div id="c-class"></div></div>
+        <div class="card"><h3>Flagged vs not flagged</h3><div id="c-flag"></div></div>
+        <div class="card"><h3>Risk score distribution</h3><div id="c-hist"></div></div>
+        <div class="card"><h3>Top detected indicators</h3><div id="c-ind"></div></div>
+        <div class="card"><h3>Detection trend</h3><div id="c-trend"></div></div>
+        <div class="card"><h3>Most common suspicious keywords</h3><div id="c-kw"></div></div>
+      </div>
+      <div class="card" id="ml-box"><h3>Model evaluation (from reports/ml_metrics.json)</h3><div id="ml"></div></div>
+    </section>
+
+    <section id="tab-history" class="tab">
+      <div class="card">
+        <div class="row">
+          <input id="h-q" placeholder="Search subject or domain">
+          <select id="h-class"><option value="">All classifications</option><option>LOW RISK</option><option>MODERATE RISK</option><option>SUSPICIOUS</option><option>HIGH RISK / LIKELY PHISHING</option></select>
+          <select id="h-sort"><option value="date:desc">Newest first</option><option value="risk:desc">Highest risk</option><option value="risk:asc">Lowest risk</option><option value="date:asc">Oldest first</option></select>
+        </div>
+        <div class="tablewrap"><table id="h-table"><thead><tr><th>#</th><th>When (UTC)</th><th>Sender domain</th><th>Subject</th><th>Risk</th><th>Class</th></tr></thead><tbody></tbody></table></div>
+        <p class="muted" id="h-count"></p>
+      </div>
+      <div class="card" id="h-detail" hidden></div>
+    </section>
+
+    <section id="tab-awareness" class="tab">
+      <div class="grid2">
+        <div class="card"><h2>How to spot a phish</h2><ol id="tips"></ol></div>
+        <div class="card"><h2>✅ Before You Click checklist</h2><ul id="checklist" class="check"></ul><p class="muted" id="check-msg"></p>
+          <h3>Remember</h3><p>No single sign proves phishing, and a clean-looking email is not proof of safety. When in doubt, verify through a channel you already trust and report it.</p></div>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
